@@ -1,0 +1,53 @@
+
+<% if user_signed_in? %>
+<h1>Fighters</h1>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Bio</th>
+      <th>User Id</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fighters.each do |fighter| %>
+
+    <!-- if we want to change this view to only fighters associated with this user. could use for "My Fighters" Page -->
+    <% if fighter.user == current_user %>
+      <tr>
+        <td><%= fighter.first_name %></td>
+        <td><%= fighter.last_name %></td>
+        <td><%= fighter.email %></td>
+        <td><%= fighter.phone %></td>
+        <td><%= fighter.bio %></td>
+        <td><%= fighter.user_id %></td>
+        <td><%= link_to 'Show', fighter %></td>
+
+        
+          <td><%= link_to 'Edit', edit_fighter_path(fighter) %></td>
+    
+      
+         <td><%= link_to 'Destroy', fighter, method: :delete, data: { confirm: 'Are you sure?' } %>
+       
+        </td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fighter', new_fighter_path, class: "btn btn-secondary" %>
+
+<% else %>
+
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+
+<% end %>

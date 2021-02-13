@@ -1,0 +1,14 @@
+<div class="jumbotron">
+  <h1 class="display-4"><%= @fighter.first_name %> <%= @fighter.last_name %></h1>
+  <p class="lead">
+    <%= @fighter.email %> |
+    <%= @fighter.phone %> |
+    <%= @fighter.bio %>
+  </p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <%= link_to 'Edit', edit_fighter_path(@fighter), class: "btn btn-secondary" %> |
+<%= link_to 'Back', fighters_path, class: "btn btn-secondary" %>
+</div>
+
+
